@@ -43,7 +43,6 @@ void draw()
         if ((k==i)||(k==j)) fill(255,0,0);
         else fill(178);
         rect(100+40*k,500,20,-a[k]);
-        delay(10);
       }
     }
   }
