@@ -2,7 +2,8 @@ int [] a;
 int [] b;
 int i,j,temp;
 boolean p = false;
-boolean overboxp = true;
+boolean overboxp = false;
+boolean overboxr = false;
 int bpx = 100, by = 100;
 int brx = 300;
 int hei = 50, wid = 100;
@@ -29,8 +30,33 @@ void setup()
 void draw()
 {
   fill(178);
-  rect(brx,by,wid,hei);
-  rect(bpx,by,wid,hei);
+  if (mouseX<bpx+wid && mouseX>bpx 
+    && mouseY<by+hei && mouseY>by) 
+    {
+      overboxp = true;
+    }
+    else
+    {
+      overboxp = false;
+    }
+  
+  if (mouseX<brx+wid && mouseX>brx 
+    && mouseY<by+hei && mouseY>by) 
+    {
+      overboxr = true;
+    }
+    else
+    {
+      overboxr = false;
+    }
+  
+  if (overboxr) fill(200);
+    else fill(178);
+    rect(brx,by,wid,hei);
+  fill(178);
+  if (overboxp) fill(200);  
+    rect(bpx,by,wid,hei);
+  fill(178);  
   if (p) 
   {
     j++;
@@ -42,8 +68,13 @@ void draw()
     else 
     {
         background(255);
-        rect(brx,by,wid,hei);
-        rect(bpx,by,wid,hei);
+        if (overboxr) fill(200);
+          else fill(178);
+          rect(brx,by,wid,hei);
+        fill(178);
+        if (overboxp) fill(200);  
+          rect(bpx,by,wid,hei);
+        fill(178); 
         if (a[i]>a[j])
         {
           temp = a[i];
